@@ -1,0 +1,22 @@
+Currently I have no idea how the type declarations will look. I am just
+playing around with notation roughly based on mathematical notation. The
+samples in here are just scratch work.
+
+Data is anything that can be described by a generative random model. So
+functions could be data, but often won't be.
+
+A data declaration has the elements:
+
+ 1. type -- the conventational type  (`Integer`, `[Integer]`, `(Integer,String)`)
+ 
+ 2. rules -- conditions within the scope of all variables
+
+ 3. model -- a generative model for each variable, expressed as a distribution
+
+A function declaration has the elements:
+
+ 1. signature -- Haskell style signature
+
+ 2. time -- a function to calculate time complexity
+
+ 3. space -- a function to calculate space complexity

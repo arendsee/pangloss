@@ -1,0 +1,58 @@
+gff :: (
+    seqid  [ i ]
+  , source [ i ]
+  , type   [ i ]
+  , start  [ i ]
+  , stop   [ i ]
+  , score  [ i ]
+  , strand [ i ]
+  , phase  [ i ]
+  , attr   [ i ]
+)
+
+i :: integer
+i > 0
+i <= n
+
+# where `~` indicates a soft edge
+n :: integer
+n ~ discrete_uniform(0, ~1e9)
+
+seqid[i] <- chromosome[a1]
+
+
+a1 :: integer
+a1 > 0
+a1 <= n1
+
+
+n1 :: integer
+n1 ~ unif(1,~100) + unif(~101,~1e5)
+
+chromosome[a1] :: [char]^chrk
+
+chrk ~ geom(0.2) + 1
+
+type[i] <- mRNA | exon | CDS | gene
+
+start :: integer
+start ~ unif(1, ~1e9)
+
+stop :: integer
+stop ~ unif(1, ~1e9)
+
+stop >= start
+
+.
+.
+.
+
+
+findOverlaps :: gff(i1, n1, a11, n11) -> gff(i2, n2, a12, n12) -> gff(i3, n3, a13, n13)
+time(findOverlaps) ~ n1 log(n2)
+
+
+geh, I really have no idea how to do this currently ...
+
+I need to look into the languages that have dependent types (e.g. Coq, ATS) and
+also the modeling languages like Bugs.
